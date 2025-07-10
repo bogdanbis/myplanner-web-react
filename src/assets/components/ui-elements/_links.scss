@@ -1,0 +1,20 @@
+a {
+	text-decoration: none;
+	font-weight: 500;
+	color: var(--blue);
+	transition: filter .2s;
+
+	&:hover {
+		text-decoration: underline;
+		filter: brightness(115%);
+		transition: all .2s;
+	}
+}
+
+.router-link-wrapper {
+	width: auto;
+
+	.link-icon {
+		margin-right: var(--spacer-s);
+	}
+}

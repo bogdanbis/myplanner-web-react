@@ -1,0 +1,40 @@
+:root {
+	--card-margin: 0 0 #{var(--spacer-xl)} 0;
+	--card-padding-horizontal: #{var(--spacer-xl)};
+	--card-padding-vertical: calc(var(--card-padding-horizontal) / 1.3);
+	--card-border-radius: #{$border-radius-l};
+
+	@media only screen and (max-width: $mobile-width-breakpoint) {
+		--card-padding-horizontal: #{var(--spacer-m)};
+		--card-padding-vertical: var(--card-padding-horizontal);
+		--card-border-radius: #{$border-radius-m};
+	}
+}
+
+.mp-card {
+	margin: var(--card-margin);
+	padding: var(--card-padding-vertical) var(--card-padding-horizontal);
+	border-radius: var(--card-border-radius);
+	background-color: var(--card-bg);
+	box-shadow: var(--box-shadow);
+	width: 100%;
+}
+
+.mp-card-title {
+	font-size: var(--font-size-h4);
+	margin-bottom: var(--font-size-s);
+	font-weight: 600;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.mp-card-subtitle {
+	display: block;
+	margin-top: calc(0px - var(--spacer-s));
+	margin-bottom: var(--spacer-l);
+}
+
+.mp-card-actions {
+	margin-top: var(--spacer-l);
+	display: flex;
+}

@@ -1,0 +1,128 @@
+$white: white;
+
+$gray: #8E8E93FF;
+$gray-2: #AEAEB2;
+$gray-3: #C7C7CC;
+$gray-4: #D1D1D6;
+$gray-5: #E5E5EA;
+$gray-55: #EBEBEB;
+$gray-6: #F2F2F7;
+
+$gray-dark: #8E8E93FF;
+$gray-2-dark: #636366;
+$gray-3-dark: #48484A;
+$gray-4-dark: #3A3A3C;
+$gray-5-dark: #2C2C2E;
+$gray-55-dark: #232325;
+$gray-6-dark: #1C1C1E;
+
+
+$red: #FF3B30FF;
+$orange: #f56400;
+$yellow: #FFCC00;
+$green: #007d1b;
+$mint: #00C7BE;
+$teal: #59ADC4;
+$cyan: #55BEF0;
+$blue: #007AFF;
+$indigo: #5856D6;
+$purple: #AF52DE;
+$pink: #ff2d55;
+$brown: #A2845E;
+
+$red-dark: #FF453A;
+$orange-dark: #FF9F0A;
+$yellow-dark: #FFD60A;
+$green-dark: #32D74B;
+$mint-dark: #66D4CF;
+$teal-dark: #6AC4DC;
+$cyan-dark: #5AC8F5;
+$blue-dark: #148EFF;
+$indigo-dark: #7d7aff;
+$purple-dark: #BF5AF2;
+$pink-dark: #FF375F;
+$brown-dark: #AC8E68;
+
+:root {
+	--white: #{$white};
+	--gray: #{$gray};
+	--gray-2: #{$gray-2};
+	--gray-3: #{$gray-3};
+	--gray-4: #{$gray-4};
+	--gray-5: #{$gray-5};
+	--gray-55: #{$gray-55};
+	--gray-6: #{$gray-6};
+
+	--red: #{$red};
+	--orange: #{$orange};
+	--yellow: #{$yellow};
+	--green: #{$green};
+	--mint: #{$mint};
+	--teal: #{$teal};
+	--cyan: #{$cyan};
+	--blue: #{$blue};
+	--indigo: #{$indigo};
+	--purple: #{$purple};
+	--pink: #{$pink};
+	--brown: #{$brown};
+}
+
+.dark {
+	--gray: #{$gray-dark};
+	--gray-2: #{$gray-2-dark};
+	--gray-3: #{$gray-3-dark};
+	--gray-4: #{$gray-4-dark};
+	--gray-5: #{$gray-5-dark};
+	--gray-55: #{$gray-55-dark};
+	--gray-6: #{$gray-6-dark};
+
+	--red: #{$red-dark};
+	--orange: #{$orange-dark};
+	--yellow: #{$yellow-dark};
+	--green: #{$green-dark};
+	--mint: #{$mint-dark};
+	--teal: #{$teal-dark};
+	--cyan: #{$cyan-dark};
+	--blue: #{$blue-dark};
+	--indigo: #{$indigo-dark};
+	--purple: #{$purple-dark};
+	--pink: #{$pink-dark};
+	--brown: #{$brown-dark};
+}
+
+:root {
+	--text-color: black;
+	--background: #F5F5F7;
+	--background-secondary: var(--gray-4);
+	--card-bg: white;
+	--primary: var(--indigo);
+	--secondary: #58585B;
+	--accent: var(--mint);
+	--success: var(--green);
+	--danger: var(--red);
+	--warning: var(--orange);
+
+	--text-secondary: var(--secondary);
+	--text-danger: var(--danger);
+	--text-success: var(--success);
+	--text-warning: var(--warning);
+
+	--box-shadow: var(--gray-4) 0 2px 10px -1px, var(--gray) 0 1px 3px -1px;
+	--box-shadow-single: var(--gray-4) 0px 1px 6px 0px;
+
+	--linear-gradient-primary: linear-gradient(135deg, var(--indigo) 30%, var(--accent) 110%);
+
+	--border-color: #{$gray-4};
+}
+
+.dark {
+	--text-color: white;
+	--background: black;
+	--card-bg: var(--gray-55);
+	--secondary: var(--gray);
+	--text-secondary: rgba(255, 255, 255, 0.7);
+
+	--border-color: #{$gray-3-dark};
+	--box-shadow: black 0 2px 10px -1px, black 0 1px 3px -1px;
+	--box-shadow-single: black 0px 1px 6px 0px;
+}

@@ -1,0 +1,28 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+.loading-icon-container {
+	display: flex;
+	align-items: center;
+	column-gap: var(--spacer-s);
+}
+
+.loading-icon {
+	display: block;
+	width: 1rem;
+	height: 1rem;
+	border: 3px solid var(--text-color);
+	border-bottom-color: transparent !important;
+	border-radius: 50%;
+	animation: rotation 2s infinite linear;
+
+	&.large {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
+
+@keyframes rotation {
+	100% {
+		transform: rotate(360deg);
+	}
+}

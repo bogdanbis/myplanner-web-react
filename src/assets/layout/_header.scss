@@ -1,0 +1,106 @@
+:root {
+	--top-bar-color: rgba(0, 0, 0, 0.8);
+}
+
+:root.dark {
+	--top-bar-bottom-border: solid 1px var(--gray-4);
+}
+
+.header {
+	background: var(--top-bar-color);
+	color: white;
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	display: flex;
+	justify-content: center;
+	border-bottom: var(--top-bar-bottom-border);
+	height: $top-bar-height;
+	grid-row: 1;
+	position: sticky;
+	top: 0;
+	z-index: 4;
+
+	.header-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 var(--spacer-xxl);
+		width: 100%;
+		max-width: calc($content-max-width + $sidebar-width);
+
+		.menu-button {
+			display: none;
+			user-select: none;
+			font-size: var(--font-size-h5);
+
+			@media only screen and (max-width: $hide-sidebar-breakpoint) {
+				display: block !important;
+				cursor: pointer;
+				font-size: var(--font-size-h3);
+			}
+		}
+
+		.left-side {
+			margin-left: auto;
+			white-space: nowrap;
+
+			@media only screen and (max-width: $mobile-width-breakpoint) {
+				max-width: 150px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font-size: var(--font-size-s);
+			}
+		}
+
+		.log-in-button {
+			@extend .mp-link-button;
+			color: white !important;
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		@media only screen and (max-width: $mobile-width-breakpoint) {
+			padding: 0 var(--spacer-m);
+		}
+	}
+
+	.logo-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		color: white;
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, 0);
+
+		@media only screen and (max-width: $mobile-width-breakpoint) {
+			left: 30%;
+		}
+
+		.logo {
+			font-family: "Lobster", sans-serif;
+			-webkit-user-select: none; /* Safari */
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* IE10+/Edge */
+			user-select: none; /* Standard */
+		}
+	}
+
+	.theme-switcher-container {
+		width: 12ch;
+		padding-left: var(--spacer-m);
+		padding-right: var(--spacer-m);
+
+		.theme-switcher {
+			@extend .clickable;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+
+			small {
+				margin-right: var(--spacer-m);
+			}
+		}
+	}
+}

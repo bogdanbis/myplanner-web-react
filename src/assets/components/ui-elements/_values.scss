@@ -1,0 +1,35 @@
+.mp-inline-value-container {
+	$horizontal-padding: var(--spacer-s);
+
+	display: flex;
+	justify-content: space-between;
+	font-weight: 500;
+	margin-right: -$horizontal-padding;
+	margin-left: -$horizontal-padding;
+	padding: var(--spacer-xs) $horizontal-padding;
+	border-radius: $border-radius-xs;
+
+	&:hover {
+		background-color: var(--gray-6);
+	}
+
+	.mp-inline-label {
+		display: block;
+		color: var(--text-secondary);
+	}
+
+	.mp-inline-value {
+		display: block;
+		color: var(--text-color);
+	}
+
+	&.no-space-between {
+		width: fit-content;
+		justify-content: left;
+
+		.mp-inline-label {
+			margin-right: var(--spacer-l);
+		}
+
+	}
+}

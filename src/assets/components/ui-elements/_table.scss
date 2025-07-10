@@ -1,0 +1,49 @@
+.mp-table-container {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.mp-table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	vertical-align: middle;
+
+	th, td {
+		padding: 0.5rem;
+		white-space: nowrap;
+
+		&:not(:first-child) {
+			padding-left: .25rem;
+		}
+	}
+
+	tbody > tr {
+		border-radius: 4px;
+		border-top: solid 1px var(--border-color);
+
+		&:hover:not(.selected-row):not(.placeholder-row) {
+			background: var(--gray-6);
+		}
+
+		&.placeholder-row {
+			text-align: center;
+		}
+	}
+
+	&.busy {
+		opacity: .55;
+	}
+}
+
+.mp-table-fixed-layout {
+	table-layout: fixed;
+}
+
+.mp-table-no-hover {
+	tbody > tr {
+		&:hover:not(.selected-row) {
+			background: none;
+		}
+	}
+}

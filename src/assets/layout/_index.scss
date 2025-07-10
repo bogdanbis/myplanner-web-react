@@ -1,0 +1,109 @@
+$top-bar-height: 40px;
+$sidebar-width: 15rem;
+$hide-sidebar-breakpoint: 950px;
+$content-max-width: 1000px;
+$layout-padding: var(--spacer-l);
+
+:root {
+	--sidebar-color: rgba(255, 255, 255, 0.8);
+	--bg-dot-color: var(--gray-5);
+}
+
+.dark {
+	--sidebar-color: rgba(0, 0, 0, .75);
+	--bg-dot-color: var(--gray-6);
+}
+
+@import "sidebar";
+@import "header";
+
+.page-grid {
+	height: 100%;
+	display: grid;
+	grid-template-rows: $top-bar-height 1fr;
+	background: var(--background);
+	background-image: radial-gradient(var(--bg-dot-color) 1px, transparent 1px);
+	background-size: 16px 16px;
+
+	@media only screen and (max-width: $mobile-width-breakpoint) {
+		display: block;
+	}
+}
+
+.content {
+	display: grid;
+	grid-template-columns: minmax($sidebar-width, auto) minmax(auto, $content-max-width);
+	justify-content: center;
+	min-height: calc(100vh - $top-bar-height);
+
+	@media only screen and (max-width: $hide-sidebar-breakpoint) {
+		display: block;
+	}
+}
+
+.sidebar-container {
+	grid-column: 1;
+	position: sticky;
+	top: $top-bar-height;
+	min-width: $sidebar-width;
+	height: calc(100vh - #{$top-bar-height});
+	padding: $layout-padding;
+
+	@media only screen and (max-width: $hide-sidebar-breakpoint) {
+		z-index: 5;
+		background-color: var(--sidebar-color);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+		border-right: solid 1px var(--border-color);
+		position: fixed;
+		top: 0;
+		height: 100vh;
+		left: calc(-1.5 * $sidebar-width);
+		width: min(calc(1.5 * $sidebar-width), 100vw);
+		transition: left .2s cubic-bezier(.4, 0, .6, 1);
+
+		&.focused {
+			left: 0;
+		}
+	}
+
+	@media only screen and (max-width: $mobile-width-breakpoint) {
+		width: 100vw;
+		left: -100vw;
+	}
+}
+
+.main-content {
+	padding: $layout-padding;
+	max-width: $content-max-width;
+	grid-column: 2;
+
+	@media only screen and (max-width: $hide-sidebar-breakpoint) {
+		grid-column: 1;
+		min-height: inherit;
+	}
+}
+
+.halved {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: var(--spacer-xl);
+
+	> * {
+		flex: 1 0;
+		min-width: calc($content-max-width * 0.5 - var(--spacer-xl) * 2);
+	}
+
+	@media only screen and (max-width: $mobile-width-breakpoint) {
+		> * {
+			min-width: 100%;
+		}
+	}
+}
+
+.page-subtitle {
+	display: block;
+	margin-top: calc(0px - var(--spacer-m));
+	margin-bottom: var(--font-size-h3);
+	color: var(--text-secondary);
+}

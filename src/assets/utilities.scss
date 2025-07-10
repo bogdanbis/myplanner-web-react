@@ -1,0 +1,78 @@
+.user-select-none {
+	user-select: none;
+}
+
+.cursor-pointer {
+	cursor: pointer !important;
+}
+
+.cursor-default {
+	cursor: default !important;
+}
+
+.clickable {
+	@extend .cursor-pointer;
+	@extend .user-select-none;
+}
+
+.text-overflow-3dots {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.text-center {
+	text-align: center;
+}
+
+@for $i from 0 through 100 {
+	.w-#{$i} {
+		width: $i * 1%;
+	}
+
+	.w-#{$i}-desktop {
+		@media only screen and (min-width: $mobile-width-breakpoint) {
+			width: $i * 1%;
+		}
+	}
+}
+
+.d-flex {
+	display: flex;
+}
+
+.d-flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.d-block {
+	display: block;
+}
+
+.d-none {
+	display: none;
+}
+
+.d-hidden {
+	opacity: 0;
+	cursor: inherit !important;
+}
+
+.align-start {
+	align-items: start;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.place-center {
+	display: grid;
+	place-items: center;
+}

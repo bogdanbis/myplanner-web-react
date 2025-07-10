@@ -1,0 +1,101 @@
+:root {
+	--font-size-h1: 40px;
+	--font-size-h2: 32px;
+	--font-size-h3: 28px;
+	--font-size-h4: 24px;
+	--font-size-h5: 20px;
+	--font-size: 16px;
+	--font-size-s: 14px;
+}
+
+small {
+	font-size: small;
+	color: var(--text-secondary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+}
+
+h2 {
+	font-size: var(--font-size-h2);
+}
+
+h3 {
+	font-size: var(--font-size-h3);
+}
+
+h4 {
+	font-size: var(--font-size-h4);
+}
+
+h5 {
+	font-size: var(--font-size-h5);
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: var(--spacer-m);
+}
+
+p, span, a {
+	line-height: 1.5;
+}
+
+ul {
+	margin-block-start: .5em;
+	padding-inline-start: 18px;
+}
+
+.text-normal {
+	color: var(--text-color) !important;
+}
+
+.text-white {
+	color: white !important;
+}
+
+.text-primary {
+	color: var(--primary) !important;
+}
+
+.text-secondary {
+	color: var(--text-secondary) !important;
+}
+
+.text-success {
+	color: var(--text-success) !important;
+}
+
+.text-danger {
+	color: var(--text-danger) !important;
+}
+
+.text-warning {
+	color: var(--text-warning) !important;
+}
+
+.strikethrough {
+	text-decoration: line-through;
+}
+
+.line-height-normal {
+	line-height: normal !important;
+
+	* {
+		line-height: normal !important;
+	}
+}
+
+@for $i from 3 through 7 {
+	.fw-#{$i}00 {
+		font-weight: #{$i}00 !important;
+	}
+}
+
+.font-size-s {
+	font-size: var(--font-size-s);
+}

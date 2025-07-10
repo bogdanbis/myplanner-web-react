@@ -1,0 +1,126 @@
+$spacer-xs: .25em;
+$spacer-s: .5em;
+$spacer-m: 1em;
+$spacer-l: 1.5em;
+$spacer-xl: 2.5em;
+$spacer-xxl: 4em;
+
+$border-radius: 10px;
+
+$mobile-width-breakpoint: 768px;
+
+$border-radius-xs: 6px;
+$border-radius-s: 20px;
+$border-radius-m: 24px;
+$border-radius-l: 30px;
+$border-radius-xl: 36px;
+
+$spacers: (
+	0: 0,
+	xs: $spacer-xs,
+	s: $spacer-s,
+	m: $spacer-m,
+	l: $spacer-l,
+	xl: $spacer-xl,
+	xxl: $spacer-xxl,
+);
+
+:root {
+	--spacer-xs: #{$spacer-xs};
+	--spacer-s: #{$spacer-s};
+	--spacer-m: #{$spacer-m};
+	--spacer-l: #{$spacer-l};
+	--spacer-xl: #{$spacer-xl};
+	--spacer-xxl: #{$spacer-xxl};
+
+	--border-radius: #{$border-radius};
+	--border-radius-xs: #{$border-radius-xs};
+	--border-radius-s: #{$border-radius-s};
+	--border-radius-m: #{$border-radius-m};
+	--border-radius-l: #{$border-radius-l};
+	--border-radius-xl: #{$border-radius-xl};
+}
+
+@each $name, $size in $spacers {
+	.m-#{$name} {
+		margin: $size !important;
+	}
+
+	.my-#{$name} {
+		margin-top: $size !important;
+		margin-bottom: $size !important;
+	}
+
+	.mx-#{$name} {
+		margin-left: $size !important;
+		margin-right: $size !important;
+	}
+
+	.mt-#{$name} {
+		margin-top: $size !important;
+	}
+
+	.mb-#{$name} {
+		margin-bottom: $size !important;
+	}
+
+	.ml-#{$name} {
+		margin-left: $size !important;
+	}
+
+	.mr-#{$name} {
+		margin-right: $size !important;
+	}
+
+	.p-#{$name} {
+		padding: $size !important;
+	}
+
+	.py-#{$name} {
+		padding-top: $size !important;
+		padding-bottom: $size !important;
+	}
+
+	.px-#{$name} {
+		padding-left: $size !important;
+		padding-right: $size !important;
+	}
+
+	.pt-#{$name} {
+		padding-top: $size !important;
+	}
+
+	.pb-#{$name} {
+		padding-bottom: $size !important;
+	}
+
+	.pl-#{$name} {
+		padding-left: $size !important;
+	}
+
+	.pr-#{$name} {
+		padding-right: $size !important;
+	}
+}
+
+.mt-auto {
+	margin-top: auto;
+}
+
+.mr-auto {
+	margin-right: auto;
+}
+
+.mb-auto {
+	margin-bottom: auto;
+}
+
+.ml-auto {
+	margin-left: auto;
+}
+
+@for $i from 1 through 100 {
+	.w-#{$i} {
+		width: $i * 1% !important;
+	}
+}

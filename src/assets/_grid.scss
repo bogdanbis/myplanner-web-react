@@ -1,0 +1,42 @@
+$grid-columns: 60;
+
+.row {
+	--gutter-x: var(--spacer-l);
+	--gutter-y: var(--spacer-s);
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: var(--gutter-y);
+	margin-right: calc(-0.5 * var(--gutter-x));
+	margin-left: calc(-0.5 * var(--gutter-x));
+
+	> * {
+		box-sizing: border-box;
+		flex-shrink: 0;
+		width: 100%;
+		max-width: 100%;
+		padding-right: calc(var(--gutter-x) * 0.5);
+		padding-left: calc(var(--gutter-x) * 0.5);
+	}
+}
+
+.col {
+	flex: 1 0 0%;
+
+	@media only screen and (max-width: $mobile-width-breakpoint) {
+		width: 100% !important;
+	}
+}
+
+@for $i from 1 through $grid-columns {
+	.row-cols-#{$i} {
+		> * {
+			flex: 0 0 auto;
+			width: calc(1 / $i) * 100%;
+		}
+	}
+
+	.col-#{$i} {
+		flex: 0 0 auto;
+		width: calc($i / $grid-columns) * 100%;
+	}
+}
