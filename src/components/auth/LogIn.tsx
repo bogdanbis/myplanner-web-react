@@ -2,6 +2,7 @@ import MpDialog, { type MpDialogHandle } from "@/components/ui/MpDialog";
 import MpButton from "@/components/ui/buttons/MpButton";
 import { useRef, useState } from "react";
 import LogInForm from "./LogInForm";
+import SignUpForm from "./SignUpForm";
 
 interface LogInProps {
     className?: string;
@@ -19,7 +20,7 @@ export default function LogIn({ className }: LogInProps) {
 
     return (
         <>
-            <MpDialog ref={dialog} title="Log In" size="small">
+            <MpDialog ref={dialog} title={showLogInForm ? 'Log In' : 'Sign Up'} size="small">
                 {showLogInForm
                     ?
                     <>
@@ -33,9 +34,8 @@ export default function LogIn({ className }: LogInProps) {
                     </>
                     :
                     <>
-                        <LogInForm />
-                        {/* <SignUpForm /> */}
-                        <div className="d-flex align-center" v-else>
+                        <SignUpForm />
+                        <div className="d-flex align-center">
                             Already have an account?
                             <MpButton link onClick={() => setShowLogInForm(!showLogInForm)} className="ml-xs">
                                 Log In
