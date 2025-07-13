@@ -1,4 +1,6 @@
-interface MpInputProps {
+import type { InputHTMLAttributes } from "react";
+
+export interface MpInputProps extends InputHTMLAttributes<HTMLInputElement> {
     value: any,
     onInput: (event: any) => void
     id: string;
@@ -22,6 +24,7 @@ export default function MpInput({
     required = false,
     type = 'text',
     unlabeled = false,
+    ...props
 }: MpInputProps) {
     const displayedLabel = required ? (label + ' *') : label;
 
@@ -42,6 +45,7 @@ export default function MpInput({
                 placeholder={placeholder}
                 required={required}
                 type={type}
+                {...props}
             />
         </>
     )
