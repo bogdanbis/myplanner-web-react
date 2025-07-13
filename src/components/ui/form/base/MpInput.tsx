@@ -1,21 +1,16 @@
 import type { InputHTMLAttributes } from "react";
 
 export interface MpInputProps extends InputHTMLAttributes<HTMLInputElement> {
-    value: any,
-    onInput: (event: any) => void
     id: string;
     label?: string;
     large?: boolean;
     monospaced?: boolean;
-    placeholder?: string
     required?: boolean;
     type?: string;
     unlabeled?: boolean;
 }
 
 export default function MpInput({
-    value, 
-    onInput,
     id,
     label,
     large = false,
@@ -33,8 +28,6 @@ export default function MpInput({
             {label &&
                 <label htmlFor={id} className="mp-label">{displayedLabel}</label>}
             <input
-                value={value}
-                onInput={onInput}
                 className={
                     'mp-form-item' +
                     (monospaced ? ' monospaced' : '') +

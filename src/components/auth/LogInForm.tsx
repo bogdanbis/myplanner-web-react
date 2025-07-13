@@ -5,14 +5,13 @@ import MpFormInput from "@/components/ui/form/MpFormInput";
 import { useState } from "react";
 
 export default function LogInForm() {
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const logIn = async () => {
+    const logIn = async (formData: FormData) => {
         setLoading(true);
         try {
+            const email = formData.get('email') as string;
+            const password = formData.get('password') as string;
             await api.logIn(email, password);
             window.location.reload();
         } catch (e) {
@@ -20,31 +19,31 @@ export default function LogInForm() {
             // TODO - show toast
         }
         setLoading(false);
-    }
+    };
 
     const LogInFormActions = () => {
         return (
-            <MpButton type="submit" disabled={!Boolean(email && password)} busy={loading}>
+            <MpButton type="submit" busy={loading}>
                 Log In
             </MpButton>
         )
     }
 
     return (
-        <MpForm cols="1" onSubmit={logIn} actionsChildren={<LogInFormActions />}>
+        <MpForm cols="1" action={logIn} actionsChildren={<LogInFormActions />}>
             <MpFormInput
                 id="email"
+                name="email"
                 type="email"
                 placeholder="Email"
-                value={email}
-                onInput={e => setEmail(e.target.value)}
+                required
             />
             <MpFormInput
                 id="password"
+                name="password"
                 type="password"
                 placeholder="Password"
-                value={password}
-                onInput={e => setPassword(e.target.value)}
+                required
             />
         </MpForm>
     )

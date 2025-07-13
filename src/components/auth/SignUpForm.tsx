@@ -41,14 +41,14 @@ export default function SignUpForm() {
                 type="email"
                 placeholder="Email"
                 value={user.email}
-                onInput={(e) => setUser({ ...user, email: e.target.value })}
+                onInput={(e) => setUser({ ...user, email: e.currentTarget.value })}
                 required
             />
             <MpFormInput
                 id="first-name"
                 placeholder="First name"
                 value={user.firstName}
-                onInput={(e) => setUser({ ...user, firstName: e.target.value })}
+                onInput={(e) => setUser({ ...user, firstName: e.currentTarget.value })}
                 cols={1 / 2}
                 required
             />
@@ -56,7 +56,7 @@ export default function SignUpForm() {
                 id="last-name"
                 placeholder="Last name"
                 value={user.lastName}
-                onInput={(e) => setUser({ ...user, lastName: e.target.value })}
+                onInput={(e) => setUser({ ...user, lastName: e.currentTarget.value })}
                 cols={1 / 2}
                 required
             />
@@ -65,7 +65,7 @@ export default function SignUpForm() {
                 type="password"
                 placeholder="Password"
                 value={user.password}
-                onInput={(e) => setUser({ ...user, password: e.target.value })}
+                onInput={(e) => setUser({ ...user, password: e.currentTarget.value })}
                 required
                 autoComplete="off"
             />
@@ -74,7 +74,7 @@ export default function SignUpForm() {
                 type="password"
                 placeholder="Confirm password"
                 value={user.passwordConfirm}
-                onInput={(e) => setUser({ ...user, passwordConfirm: e.target.value })}
+                onInput={(e) => setUser({ ...user, passwordConfirm: e.currentTarget.value })}
                 required
                 autoComplete="off"
             />
