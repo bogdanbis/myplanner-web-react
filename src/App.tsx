@@ -1,13 +1,13 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
 import { useEffect } from 'react';
+import { createBrowserRouter, RouterProvider } from "react-router";
 import Layout from "./components/layout/Layout";
 import Explore from "./pages/Explore";
 import MyPlans from "./pages/MyPlans";
 import CreatedPlans from "./pages/creator/CreatedPlans";
 import SentInvites from "./pages/creator/SentInvites";
 import { useAppDispatch } from './store/hooks';
+import { fetchUser, logOut } from "./store/slices/authSlice";
 import { initPreferedColorScheme } from './store/slices/uiPreferencesSlice';
-import { fetchUser, resetAuthSlice } from "./store/slices/authSlice";
 
 const router = createBrowserRouter([
     {
@@ -36,15 +36,19 @@ const router = createBrowserRouter([
 export default function App() {
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        dispatch(initPreferedColorScheme());
+    const logIn = async () => {
         if (localStorage.getItem('token')) {
             try {
-                dispatch(fetchUser());
-            } catch {
-                dispatch(resetAuthSlice());
+                await dispatch(fetchUser());
+            } catch (e) {
+                dispatch(logOut());
             }
         }
+    }
+
+    useEffect(() => {
+        dispatch(initPreferedColorScheme());
+        logIn();
     }, [dispatch]);
 
     return (

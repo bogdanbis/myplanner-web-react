@@ -25,7 +25,7 @@ const authSlice = createSlice({
             state.requireLogIn = true;
         },
         resetAuthSlice(state: UserState) {
-            state.user = {};
+            state.user = null;
             state.requireLogIn = false;
         },
     },

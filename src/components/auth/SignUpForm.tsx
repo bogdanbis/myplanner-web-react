@@ -24,8 +24,12 @@ export default function SignUpForm() {
 
     const signUp = async () => {
         setLoading(true);
-        await api.signUp(user);
-        window.location.reload();
+        try {
+            await api.signUp(user);
+            window.location.reload();
+        } catch {
+            setLoading(false);
+        }
     }
 
     const FormActions = () => (
