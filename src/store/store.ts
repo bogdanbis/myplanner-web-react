@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import uiPreferencesReducer from './slices/uiPreferencesSlice';
 import authReducer from './slices/authSlice';
+import publicPlansReducer from './slices/publicPlansSlice';
 
 const store = configureStore({
     reducer: {
         uiPreferences: uiPreferencesReducer,
         auth: authReducer,
+        publicPlans: publicPlansReducer,
     },
 });
 
