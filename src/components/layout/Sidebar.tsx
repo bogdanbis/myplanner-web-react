@@ -1,4 +1,4 @@
-import MpIcon from "../ui/MpIcon";
+import MpIcon from "@/components/ui/icons/MpIcon";
 import NavMenu from "./NavMenu";
 
 const mainMenuItems = [

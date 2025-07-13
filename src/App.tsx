@@ -7,6 +7,7 @@ import CreatedPlans from "./pages/creator/CreatedPlans";
 import SentInvites from "./pages/creator/SentInvites";
 import { useAppDispatch } from './store/hooks';
 import { initPreferedColorScheme } from './store/slices/uiPreferencesSlice';
+import { fetchUser, resetAuthSlice } from "./store/slices/authSlice";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,13 @@ export default function App() {
 
     useEffect(() => {
         dispatch(initPreferedColorScheme());
+        if (localStorage.getItem('token')) {
+            try {
+                dispatch(fetchUser());
+            } catch {
+                dispatch(resetAuthSlice());
+            }
+        }
     }, [dispatch]);
 
     return (

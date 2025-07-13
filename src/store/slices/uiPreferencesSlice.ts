@@ -49,7 +49,6 @@ export const setAndStorePreferedScheme = (scheme: string) => (dispatch: AppDispa
 };
 
 export const initPreferedColorScheme = () => (dispatch: AppDispatch) => {
-    console.log('initPreferedColorScheme')
     let preferedColorScheme = localStorage.getItem('prefered-color-scheme') || 'auto';
     dispatch(setPreferedScheme(preferedColorScheme));
     dispatch(applyColorScheme(preferedColorScheme));

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import MpIcon from "@/components/ui/MpIcon";
+import MpIcon from "@/components/ui/icons/MpIcon";
 
 export interface NavMenuItemProps {
     path: string,
