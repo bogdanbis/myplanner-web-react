@@ -1,11 +1,11 @@
-import type Plan from "@/models/Plan";
+import type { IPlan } from "@/models/Plan";
 import MpCard from "../ui/cards/MpCard";
 import MpCardActions from "../ui/cards/MpCardActions";
 import MpIcon from "../ui/icons/MpIcon";
 import MpLink from "../ui/MpLink";
 
 interface PlansListProps {
-    plans: Plan[];
+    plan: IPlan;
 }
 
 function NumberOfParticipants({ count }: { count: number | undefined }) {
@@ -14,8 +14,8 @@ function NumberOfParticipants({ count }: { count: number | undefined }) {
         : 'No participants'
 }
 
-export default function PlansList({ plans }: PlansListProps) {
-    return plans.map(plan => (
+export default function PublicPlanCard({ plan }: PlansListProps) {
+    return (
         <MpCard title={plan.title} key={plan.id}>
             <div className="mp-card-subtitle">
                 <div>
@@ -27,9 +27,15 @@ export default function PlansList({ plans }: PlansListProps) {
             <span className="text-secondary">{plan.shortDescription}</span>
             <MpCardActions>
                 <div>
-                    <MpLink to={'/plan/' + plan.id}>Details</MpLink>
+                    {plan.acquired == null
+                        ? <MpLink to={'/plan/' + plan.id}>Details</MpLink>
+                        : <MpLink to={'/my-plans/' + plan.acquired.id} className="text-primary">
+                            You have this plan
+                            <MpIcon icon="check-lg" />
+                        </MpLink>
+                    }
                 </div>
             </MpCardActions>
         </MpCard>
-    ));
+    )
 }
