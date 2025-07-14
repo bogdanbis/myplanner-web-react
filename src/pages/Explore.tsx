@@ -1,4 +1,4 @@
-import PublicPlans from "@/components/explore/PublicPlans";
+import PublicPlans from "@/components/plans/PublicPlans";
 
 export default function Explore() {
     return (
