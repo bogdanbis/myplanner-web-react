@@ -2,6 +2,7 @@ import api from '@/api/index.js';
 import { sanitize } from '@/utils/sanitize.ts';
 import ApplicationUser from './ApplicationUser.js';
 import Step from './Step.ts';
+import type { IPlanProgress } from './PlanProgress.ts';
 
 export interface IPlan {
 	id?: string;
@@ -21,7 +22,7 @@ export interface IPlan {
 		numberOfParticipants: number | null;
 		completedStepsCount: number | null;
 	};
-	acquired: boolean;
+	acquired?: IPlanProgress | null;
 }
 
 export default class Plan implements IPlan {
@@ -42,7 +43,7 @@ export default class Plan implements IPlan {
 		numberOfParticipants: null,
 		completedStepsCount: null,
 	};
-	acquired: boolean = false;
+	acquired = null;
 
 	constructor(plan: any) {
 		if (!plan) return;

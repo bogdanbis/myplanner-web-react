@@ -5,6 +5,7 @@ import Explore from "@/pages/Explore";
 import MyPlans from "@/pages/MyPlans";
 import PlanPublicInfo from "@/pages/PlanPublicInfo";
 import { createBrowserRouter } from "react-router";
+import PlanProgress from "./pages/participant/PlanProgress";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
             {
                 path: '/my-plans',
                 Component: MyPlans,
+            },
+            {
+                path: '/my-plans/:id',
+                Component: PlanProgress,
             },
             {
                 path: '/creator',
