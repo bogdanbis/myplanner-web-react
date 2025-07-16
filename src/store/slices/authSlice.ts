@@ -24,6 +24,9 @@ const authSlice = createSlice({
         requestLogIn(state: UserState) {
             state.requireLogIn = true;
         },
+        setRequireLogIn(state: UserState, action: PayloadAction<boolean>) {
+            state.requireLogIn = action.payload;
+        },
         resetAuthSlice(state: UserState) {
             state.user = null;
             state.requireLogIn = false;
@@ -31,7 +34,7 @@ const authSlice = createSlice({
     },
 });
 
-export const { setUser, requestLogIn, resetAuthSlice } = authSlice.actions;
+export const { setUser, requestLogIn, setRequireLogIn, resetAuthSlice } = authSlice.actions;
 
 export const fetchUser = () => async (dispatch: AppDispatch) => {
     const userResponse: IApplicationUser = await api.get('/whoami');

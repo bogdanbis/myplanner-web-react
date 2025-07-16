@@ -45,7 +45,7 @@ export default class Plan implements IPlan {
 	};
 	acquired = null;
 
-	constructor(plan: any) {
+	constructor(plan?: any) {
 		if (!plan) return;
 		this.init(plan);
 	}

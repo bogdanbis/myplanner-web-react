@@ -24,10 +24,19 @@ const plansSlice = createSlice({
         setAcquiredPlans(state: PlansState, action: PayloadAction<IPlanProgress[]>) {
             state.acquiredPlans = [...action.payload]
         },
-    }
+        addAcquiredPlan(state: PlansState, action: PayloadAction<IPlanProgress>) {
+            state.acquiredPlans?.unshift(action.payload);
+        },
+    },
+    selectors: {
+        getPublicPlan(state: PlansState, id: string) {
+            return state.publicPlans?.find(it => it.id === id);
+        },
+    },
 });
 
-export const { setPublicPlans, setAcquiredPlans } = plansSlice.actions;
+export const { setPublicPlans, setAcquiredPlans, addAcquiredPlan } = plansSlice.actions;
+export const { getPublicPlan } = plansSlice.selectors;
 
 export const fetchPublicPlans = () => async (dispatch: AppDispatch, getState: () => RootState) => {
     let publicPlans: IPlan[] = await api.get('/plans/browse');
@@ -37,12 +46,19 @@ export const fetchPublicPlans = () => async (dispatch: AppDispatch, getState: ()
             p.acquired = acquiredPlans.find((it: IPlanProgress) => it.plan.id === p.id);
             return p;
         })
-    dispatch(setPublicPlans(publicPlans));
+    await dispatch(setPublicPlans(publicPlans));
 }
 
 export const fetchAcquiredPlans = () => async (dispatch: AppDispatch) => {
     const acquiredPlans: IPlanProgress[] = await api.get('/plans/acquired');
     dispatch(setAcquiredPlans(acquiredPlans));
+}
+
+export const acquirePlan = (id: string) => async (dispatch: AppDispatch) => {
+    const planProgress: IPlanProgress = await api.post(`/plans/${id}/acquire`);
+    dispatch(addAcquiredPlan(planProgress));
+    await dispatch(fetchPublicPlans());
+    return planProgress;
 }
 
 export default plansSlice.reducer;

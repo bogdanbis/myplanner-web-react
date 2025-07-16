@@ -1,8 +1,10 @@
 import MpDialog, { type MpDialogHandle } from "@/components/ui/MpDialog";
 import MpButton from "@/components/ui/buttons/MpButton";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogInForm from "./LogInForm";
 import SignUpForm from "./SignUpForm";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setRequireLogIn } from "@/store/slices/authSlice";
 
 interface LogInProps {
     className?: string;
@@ -10,17 +12,29 @@ interface LogInProps {
 
 export default function LogIn({ className }: LogInProps) {
 
+    const requireLogIn = useAppSelector(state => state.auth.requireLogIn)
     const [showLogInForm, setShowLogInForm] = useState(true);
 
     const dialog = useRef<MpDialogHandle>(null);
+
+    const dispatch = useAppDispatch();
 
     const openLogInDialog = () => {
         dialog.current?.open();
     }
 
+    const dialogClosed = () => {
+        dispatch(setRequireLogIn(false));
+    }
+
+    useEffect(() => {
+        if (requireLogIn)
+            openLogInDialog();
+    }, [requireLogIn]);
+
     return (
         <>
-            <MpDialog ref={dialog} title={showLogInForm ? 'Log In' : 'Sign Up'} size="small">
+            <MpDialog ref={dialog} title={showLogInForm ? 'Log In' : 'Sign Up'} size="small" onClose={dialogClosed}>
                 {showLogInForm
                     ?
                     <>
@@ -42,7 +56,7 @@ export default function LogIn({ className }: LogInProps) {
                             </MpButton>
                         </div>
                     </>}
-            </MpDialog >
+            </MpDialog>
             <MpButton className={'log-in-button ' + (className ? className : '')} onClick={openLogInDialog}>
                 Log In
             </MpButton>

@@ -4,6 +4,7 @@ import MpIcon from "./icons/MpIcon";
 interface MpDialogProps {
     size?: string;
     title?: string;
+    onClose?: () => void;
 }
 
 export interface MpDialogHandle {
@@ -11,7 +12,7 @@ export interface MpDialogHandle {
     close: () => void;
 }
 
-const MpDialog = forwardRef<MpDialogHandle, PropsWithChildren<MpDialogProps>>(({ size = 'normal', title, children }, ref) => {
+const MpDialog = forwardRef<MpDialogHandle, PropsWithChildren<MpDialogProps>>(({ size = 'normal', title, children, onClose }, ref) => {
     const dialog = useRef<HTMLDialogElement>(null);
 
     const open = () => {
@@ -20,6 +21,8 @@ const MpDialog = forwardRef<MpDialogHandle, PropsWithChildren<MpDialogProps>>(({
 
     const close = () => {
         dialog.current?.close();
+        if (onClose != null)
+            onClose();
     }
 
     useImperativeHandle(ref, () => ({ open, close }), []);
